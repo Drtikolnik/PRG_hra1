@@ -14,7 +14,7 @@ public class Game {
         StringBuilder sb = new StringBuilder(name);
         sb.setCharAt(0, Character.toUpperCase(sb.charAt(0)));
 
-        Charakter player = new Charakter(name);
+        Charakter player = new Charakter(sb.toString());
 
         player.generateStats();
 
@@ -86,7 +86,7 @@ public class Game {
         System.out.println("Souboj začíná!");
 
 
-        while (a.getHp() > 0 || b.getHp() > 0) {
+        while (a.getHp() > 0 && b.getHp() > 0) {
             //výpis hp
             IO.println(a.getName()+ " má " +a.getHp()+ " HP");
             IO.println(b.getName()+ " má " +b.getHp()+ " HP");
@@ -97,6 +97,7 @@ public class Game {
                 String pouzitLektvar = sc.nextLine().toLowerCase().trim();
                 if (pouzitLektvar.equals("ano")) {
                     a.getInventory().remove("lektvar");
+                    a.setHp(a.getHp() + 20);
                 }
             }
 
